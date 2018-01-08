@@ -1,0 +1,109 @@
+<html>
+ 
+<head>
+<title>If you can read this it worked</title>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+<script language="Javascript">
+
+function main()
+{
+  window.document.write("\074html>\n"+
+  " \n"+
+  "\074head>\n"+
+  "\074title>If you can read this it worked\074/title>\n"+
+  "\074meta http-equiv=\042Content-Type\042 content=\042text/html; charset=ISO-8859-1\042>\n"+
+  "\074meta name=\042GENERATOR\042 content=\042Microsoft FrontPage 3.0\042>\n");
+  window.document.write("\074/head>\n");
+  window.document.write("\074body bgcolor=\042#000000\042>\n");
+  var key;
+  var data;
+  var x,y,z;
+  var temp;
+  var binary = new Array();
+  var bkey = new Array();
+  var key_length;
+  var data_mod;
+  var data_add = 0;
+  var data_div;
+  var dec;
+
+  data = ".2f-<}pQ_VR\224\205\222Âÿý§®í÷£åfdb:,Xk|x}r}\032"+
+         "[WMÂÃ£Ð\202ñ\202ñ¡½Êå\047~hr.mo`<ny}\134LPP"+
+         "\224À\227\217³ª¤¥¢¿¬åhis92!f\077\042<P\013"+
+         "\216ÝÂ\203¤¯µ¤ñ¡½¿ahis.homy!>J]J\134YRP\203\217"+
+         "\214\217³üãâÀ³À³D7%9Wa{.xynAHL]P\211\223À\206¨"+
+         "­¤áôê÷ë\047sob~o}o<:mMWL#9= ¬¥Æ\221´®µú¿áñ½\015;"+
+         "(aa`z0 3t/22LCP\201\214\211\207¯üã¢æí÷æu%9;ha`z"+
+         "<z}]\032n\216\201ÂÀ¢®­®ñ¾¡ D7D7M>,0Rsk<LJA"+
+         "P\217\224\210\205³á­¨íè¿áu9\015;l|0 3zsVL_CN"+
+         "êÀêÜ±ÿç¯áðó¸;(w9.2l<}pQ_VR\224\205\222Âÿý§®í"+
+         "÷£åfdb:,Xk|x}r}\032[WMÂÃ£Ð\202ñ\202ñ¡½¿ðjfkk0]"+
+         "k`x<q}QTOP\221\225\205\223µ¨®¯ð¯\211àhjwkog`zo"+
+         "<sn[WU\223À\224\217ûáý £ëñæa:%jogbzs&}iO]x_"+
+         "^\205\224ÂÞ ´¶¤Ãäîû)ibs2!o0< 3oUYTTNLÞêÜ\223¬ ­"+
+         "­½«ÊÀV=\0476\0776:<,(,5KUNÜ\202\222ÞËýî§ìí÷½;"+
+         "(w9";
+
+  key = prompt ("Please input your Key","Passwort");
+  key_length = key.length*8;
+
+  for(z=0;z<key.length;z++)   {
+     dec = key.charCodeAt(z);
+     for (x = 0; x < 8; x++)   	{
+  bkey[((-x)+7)+z*8] =  dec % 2;
+           dec = (dec - (dec % 2))/2;
+     }
+  }
+
+  if(data_mod = data.length %4 !=0)
+     data_add = 1;
+
+  data_div = data.length-(data.length%4);
+
+  for(y=0;y<data_div/4+data_add;y++)
+     if((y == (((data_div/4)+data_add)-1))&&(data_mod != 0))
+        crypt(data,key,bkey,key_length,y,binary,data_mod);
+     else
+        crypt(data,key,bkey,key_length,y,binary,4);
+
+function crypt (data,key,bkey,key_length,y,binary,crypt_length)
+  {
+  var cipherdata = new Array();
+  var z,x;
+
+  for(z=0;z<crypt_length;z++)
+     toBin(data.charCodeAt(z+y*4),z,binary);
+
+  for(x=0;x<key.length;x++)   {
+     for(z = 0; z <crypt_length*8; z++)
+          if(binary[z] == bkey[((z + 8*x)+y)% key_length])
+           binary[z] = 0;
+        else
+	   binary[z] = 1;
+  }
+
+  for(x=0;x<crypt_length;x++)   {
+     temp=0;
+     for(z = 7; z >= 0; z--)
+     temp = temp + (binary[z +x*8] * Math.pow(2,(-z + 7)));
+     cipherdata = cipherdata + String.fromCharCode(temp);
+     document.write(String.fromCharCode(temp));
+  }
+
+  function toBin(dec,z,binary)
+  {
+    for (x = 0; x < 8; x++)         {
+      binary[((-x)+7)+z*8] =  dec % 2;
+      dec = (dec -(dec % 2))/2;
+    }
+  }
+}
+  window.document.write("\074/body>\n");
+  window.document.write("\074/html>\n");
+}
+</script>
+</head>
+<body bgcolor="#000000" onload="main();">
+</body>
+</html>

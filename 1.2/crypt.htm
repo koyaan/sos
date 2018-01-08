@@ -1,0 +1,76 @@
+<html>
+ 
+<head>
+<title>If you can read this it worked</title>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+<script language="Javascript">
+
+function main()
+{
+window.document.write("\074html>\n"+
+" \n"+
+"\074head>\n"+
+"\074title>If you can read this it worked\074/title>\n"+
+"\074meta http-equiv=\042Content-Type\042 content=\042text/html; charset=ISO-8859-1\042>\n"+
+"\074meta name=\042GENERATOR\042 content=\042Microsoft FrontPage 3.0\042>\n");
+window.document.write("\074/head>\n");
+window.document.write("\074body bgcolor=\042#000000\042>\n");
+var seed = new Array(256);
+var state = new Array(256);
+var i, n, temp, xorIndex;
+var key_x = 0;
+var key_y = 0;
+var index1 = 0;
+var index2 = 0;
+var data = prompt("Please enter password:", "");
+
+
+var cipher = 
+	"nkÅ\207A¬Äô\200¥Q\015\216?´Ð\204,n\011Ã*/®°\014L"+
+	"ÿÏ\016mÈhå¬-k5ñ\047\217\227\213röý.,Î8\222ôRÔê"+
+	"\017\220x¬Á|¡u÷ÿÖo8\032G¨cG{\215]®_\227I.\0154Ú"+
+	"È~­ZÞ* £Ë¤¢\2073p,\211:iD£Â3Y\201ezjÍ¬èïÔ% ,\213"+
+	" ß¶á\204?`û\013ÿöÅ;2µkª:\011\217¸\216²YÁiÄor%[±o"+
+	"í\047±IËPÞW\016Hâç·WJÎÑ½g\201Ï\212\237ÿe|ù\231i"+
+	"ª Z\203ÍÆÐ^Úðs\207ù¥Û\206yMÛj|<ÁET ßç\234\215"+
+	"q4b\013Ñë¶ûÎì¿V»ÔÜ®\233îú%´ºì3Ü+\011\201¡ÿ²j\047"+
+	"Ø]!qÌÈþéÉYÿ¡ôÁ9\000/á\216oà\0167 _\232)D\2335k\220"+
+	"y«:©\202ôòÁ\211ñ<\236\224ê>m4¡Mög°Í\210,a\213"+
+	"|¬ß¹\214Á¸V#ÓI\211Ö8eAD¡\032k«[\225Æ¶ð[_ì÷2£r"+
+	"ò\220\236ksR¹\134\226^\225\200©ý\201º=ÎÀ1áON\203"+
+	"©Ú\222õ\225ÿt\017cá9k³®±»\225\225áb\0119Ô#(D\012"+
+	"\227¢ã³\211~P»ÿWwª\2108àMîìpU\017ZSU\214fo\222"+
+	"*9ÇJ§jÏ»î9Q¸y\012\235\232bßKUt£²d\235ÒÓ4T>"+
+	"\011² kð~>$Ü\205\217ã×1k{\212?e\214\202eûtß¿;¶\007"+
+	"À×[Éø\200ñ#1y»\232<)\236ñö\223©RC!,±N;¶¬×ÒKúø"+
+	"Q\042Ú\012¤\213\042z¶w";
+
+n = data.length;
+for(i = 0; i < 256; i++)	{
+ 	state[i] = i;
+	seed[i] = data.charCodeAt(i%n);
+}
+for(i = 0; i < 256; i++)    {
+	index2 = (seed[index1] + state[i] + index2) % 256;	temp = state[i];   state[i] = state[index2];   state[index2] = temp;
+ 	index1 = (index1 + 1) % n;
+}
+for(i = 0; i <cipher.length; i++)  { 
+	key_x = (key_x + 1) % 256;
+	key_y = (state[key_x] + key_y) % 256;
+	temp = state[key_x];   state[key_x] = state[key_y];   state[key_y] = temp;
+	xorIndex = (state[key_x] + state[key_y]) % 256;
+
+	window.document.write(String.fromCharCode(cipher.charCodeAt(i) ^ state[xorIndex]));
+}
+
+window.document.write("\074/body>\n");
+window.document.write("\074/html>\n"+
+"\n");
+}
+</script>
+</head>
+<body bgcolor="#000000" onload="main();">
+</body>
+</html>
+
