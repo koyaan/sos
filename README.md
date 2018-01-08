@@ -1,7 +1,7 @@
 # Simple Online Security
 
 This is a mirror of members.linznet.at/auwe the original website
-for the Simple Online Security project to [https://koyaan.com/sos](https://koyaan.com/sos)
+for the Simple Online Security project to [http://koyaan.com/sos](http://koyaan.com/sos)
 
 # Do not use ! For educational purposes only !
 
@@ -27,4 +27,4 @@ Encryption is 100.00% done!
     
 ```
 
-[Decryption demo](https://koyaan.com/sos/1.2/crypt.htm) password `ABCDEFG`
+[Decryption demo](http://koyaan.com/sos/1.2/crypt.htm) password `ABCDEFG`
