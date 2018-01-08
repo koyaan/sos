@@ -1,672 +1,597 @@
 <html>
 
 <head>
-<title>The SOS - System Homepage</title>
-<!-- This code has a copyright!
-So why do you watch it? You can contact the Webmaster [auWE] here:
-POP3 [auwe-prod@netway.at] or ICQ [11842040] -->
-<script LANGUAGE="JavaScript">
-function Is() {
-  var agent = navigator.userAgent.toLowerCase();
-  this.major = parseInt(navigator.appVersion);
-  this.minor = parseFloat(navigator.appVersion);
-  this.ns = ((agent.indexOf('mozilla')!=-1) &&
-((agent.indexOf('spoofer')==-1) &&
-(agent.indexOf('compatible') == -1)));
-  this.ns2 = (this.ns && (this.major == 3));
-  this.ns3 = (this.ns && (this.major == 3));
-  this.ns4 = (this.ns && (this.major >= 4));
-  this.ie = (agent.indexOf("msie") != -1);
-  this.ie3 = (this.ie && (this.major == 2));
-  this.ie4 = (this.ie && (this.major >= 4));
-  this.op3 = (agent.indexOf("opera") != -1);
-  this.win = (agent.indexOf("win")!=-1);
-  this.mac = (agent.indexOf("mac")!=-1);
-  this.unix = (agent.indexOf("x11")!=-1);
-}
+  <title>The SOS - System Homepage</title>
+  <script LANGUAGE="JavaScript">
 
-var is = new Is();
+      function loadl() {
 
-if(is.ns4) {
-  doc = "document";
-  sty = "";
-  htm = ".document"
-	xpos = "e.pageX";
-	ypos = "e.pageY";
+          var wtemp
+          wtemp = available_width-160;
+          wtemp = wtemp/2;
+          var htemp
+          htemp = available_height-45;
+          htemp = htemp/2;
 
-} else if(is.ie4) {
-  doc = "document.all";
-  sty = ".style";
-  htm = ""
-	xpos = "event.x";
-	ypos = "event.y";
-}
+          loadObj = document.getElementById("loadlay");
+          loadObj.style.left = wtemp+"px";
+          loadObj.style.top = htemp+"px";
+          loadObj.style.display = "block";
 
+//positionLayers();
+          preLoad();
 
-function loadl() {
+      }
 
-var wtemp
-wtemp = available_width-160;
-wtemp = wtemp/2;
-var htemp
-htemp = available_height-45;
-htemp = htemp/2;
+      var count = 0;
 
-loadObj = eval(doc + '["loadlay"]' + sty);
-loadObj.left = wtemp;
-loadObj.top = htemp;
-loadObj.visibility = "visible";
+      function preLoad() {
 
-positionLayers();
-//preLoad();
+          pic1 = new Image();
+          pic1.src = "logo2klein.jpg";
+          pic1.onload = loadCheck;
+          pic2 = new Image();
+          pic2.src = "BC1.jpg";
+          pic2.onload = loadCheck;
+      }
 
-}
+      function loadCheck() {
+          count++;
+          if(count == 2) {
 
-var count = 0;
+              positionLayers();
+          }
+      }
 
-function preLoad() {
+      function positionLayers() {
 
-  pic1 = new Image();
-  pic1.src = "logo2klein.jpg";
-  pic1.onload = loadCheck;
-  pic2 = new Image();
-  pic2.src = "BC1.jpg";
-  pic2.onload = loadCheck;
-}
+          loadObj.display = "none";
 
-function loadCheck() {
-  count++;
-  if(count == 2) {
-    
-    positionLayers();
-  }
-}
+          var pictemp = available_width-640;
 
-function positionLayers() {
-
-loadObj.visibility = "hidden";
-
-var pictemp
-pictemp = available_width-640;
-pictemp = pictemp/2;
-topObj = eval(doc + '["toplayer"]' + sty);
-topObj.left = pictemp;
+          pictemp = pictemp/2;
+          topObj = document.getElementById("toplayer");
+          topObj.style.left = pictemp+"px";
 
 
 
 
-linkObj = eval(doc + '["linklayer"]' + sty);
-linkObj.left = pictemp;
+          linkObj = document.getElementById("linklayer");
+          linkObj.style.left = pictemp + "px";
 
-infoObj = eval(doc + '["labinfo"]' + sty);
-infoObj.visibility = "hidden";
-infoObj.left = pictemp +20;
-infoObj.top = 120;
+          infoObj = document.getElementById("labinfo");
+          infoObj.display = "none";
+          infoObj.style.left = pictemp +20 + "px";
+          infoObj.style.top = 120 + "px";
 
-codeObj = eval(doc + '["labcode"]' + sty);
-codeObj.visibility = "hidden";
-codeObj.left = pictemp +20;
-codeObj.top = 120;
+          codeObj = document.getElementById("labcode");
+          codeObj.display = "none";
+          codeObj.style.left = pictemp +20 + "px";
+          codeObj.style.top = 120 + "px";
 
-algorithmObj = eval(doc + '["labalgorithm"]' + sty);
-algorithmObj.visibility = "hidden";
-algorithmObj.left = pictemp +20;
-algorithmObj.top = 120;
+          algorithmObj = document.getElementById("labalgorithm");
+          algorithmObj.display = "none";
+          algorithmObj.style.left = pictemp +20 + "px";
+          algorithmObj.style.top = 120 + "px";
 
-futureObj = eval(doc + '["labfuture"]' + sty);
-futureObj.visibility = "hidden";
-futureObj.left = pictemp +20;
-futureObj.top = 120;
+          futureObj = document.getElementById("labfuture");
+          futureObj.display = "none";
+          futureObj.style.left = pictemp +20 + "px";
+          futureObj.style.top = 120 + "px";
 
-linksObj = eval(doc + '["lablinks"]' + sty);
-linksObj.visibility = "hidden";
-linksObj.left = pictemp +20;
-linksObj.top = 120;
+          linksObj = document.getElementById("lablinks");
+          linksObj.display = "none";
+          linksObj.style.left = pictemp +20 + "px";
+          linksObj.style.top = 120 + "px";
 
-testObj = eval(doc + '["labtest"]' + sty);
-testObj.visibility = "hidden";
-testObj.left = pictemp +20;
-testObj.top = 120;
+          testObj = document.getElementById("labtest");
+          testObj.display = "none";
+          testObj.style.left = pictemp +20 + "px";
+          testObj.style.top = 120 + "px";
 
-demo1Obj = eval(doc + '["demo1"]' + sty);
-demo1Obj.top = 170;
-demo1Obj.left = pictemp + 185; 
-demo3Obj = eval(doc + '["demo3"]' + sty);
-demo3Obj.top = 170;
-demo3Obj.left = pictemp + 185;
-demo4Obj = eval(doc + '["demo4"]' + sty);
-demo4Obj.top = 170;
-demo4Obj.left = pictemp + 185;
-demo5Obj = eval(doc + '["demo5"]' + sty);
-demo5Obj.top = 170;
-demo5Obj.left = pictemp + 185;
-demo6Obj = eval(doc + '["demo6"]' + sty);
-demo6Obj.top = 170;
-demo6Obj.left = pictemp + 185;
-demo7Obj = eval(doc + '["demo7"]' + sty);
-demo7Obj.top = 170;
-demo7Obj.left = pictemp + 185;
+          demo1Obj = document.getElementById("demo1");
+          demo1Obj.style.top = 170 + "px";
+          demo1Obj.style.left = pictemp + 185 + "px";
+          demo3Obj = document.getElementById("demo3");
+          demo3Obj.style.top = 170 + "px";
+          demo3Obj.style.left = pictemp + 185 + "px";
+          demo4Obj = document.getElementById("demo4");
+          demo4Obj.style.top = 170 + "px";
+          demo4Obj.style.left = pictemp + 185 + "px";
+          demo5Obj = document.getElementById("demo5");
+          demo5Obj.style.top = 170 + "px";
+          demo5Obj.style.left = pictemp + 185 + "px";
+          demo6Obj = document.getElementById("demo6");
+          demo6Obj.style.top = 170 + "px";
+          demo6Obj.style.left = pictemp + 185 + "px";
+          demo7Obj = document.getElementById("demo7");
+          demo7Obj.style.top = 170 + "px";
+          demo7Obj.style.left = pictemp + 185 + "px";
 
-scrollLyr = eval(doc + '["scrollLayer"]' + sty);
-dowmLyr = 
-	scrollLyr.left = pictemp +228;
-	scrollLyr.top = 100;
-	
-scrollLyr.visibility = "visible";
+          scrollLyr = document.getElementById("scrollLayer");
+          dowmLyr =
+              scrollLyr.style.left = pictemp +275 + "px";
+          scrollLyr.style.top = 100 + "px";
+          loadObj.style.display = "none";
+          scrollLyr.style.display = "block";
 
-topObj.visibility = "visible";
-linkObj.visibility = "visible";
-demo1Obj.visibility = "visible";
+          topObj.style.display = "block";
+          linkObj.style.display = "block";
+          demo1Obj.style.display = "block";
 
-pathpicObj = eval(doc + '["pathpicLayer"]' + sty);
+          pathpicObj = document.getElementById("pathpicLayer");
 
-if(is.ns4) {
-window.captureEvents(Event.MOUSEMOVE);
- window.onmousemove=mouseMove;
+          window.onmousemove=mouseMove;
 
-}
+          pathpicObj.style.display = "block";
 
-pathpicObj.visibility = "visible";
+          arraySetup();
+      }
 
-arraySetup();
-}
+      var menu_selection="demo1";
 
-var menu_selection="demo1";
+      function ToggleLayer(selection) {
+          var old_page = document.getElementById(menu_selection);
+          old_page.style.display = "none";
 
-function ToggleLayer(selection) {
-  var old_page = eval(menu_selection + "Obj");
-  old_page.visibility = "hidden";
+          var new_page = document.getElementById(selection);
+          new_page.style.display = "block";
 
-  var new_page = eval(selection + "Obj");
-  new_page.visibility = "visible";
+          menu_selection = selection;
+      }
 
-  menu_selection = selection;
-}
+      var loop = true;
+      var direction = "up";
+      var speed = 10;
+      var timer1 = null;
 
-var loop = true;
-var direction = "up";
-var speed = 10;
-var timer1 = null;
+      function mscroll(dir,spd) {
+          direction = dir;
+          speed = spd;
+          var page = document.getElementById(menu_selection);
+          var y_pos = parseInt(page.style.top);
 
-function scroll(dir,spd) {
-  direction = dir;
-  speed = spd;
-  var page = eval(menu_selection + "Obj");
-  var y_pos = parseInt(page.top);
-  if(loop == true) {
-    if(direction == "dn") {
-      page.top = (y_pos-(speed));
-    } else if(direction == "up" && y_pos < 170) {
-      page.top = (y_pos+(speed));
-    } else if(direction == "top") {
-      page.top = 170;
+          if(loop == true) {
+              if(direction == "dn") {
+                  page.style.top = (y_pos-(speed)) + "px";
+
+              } else if(direction == "up" && y_pos < 170) {
+                  page.style.top = (y_pos+(speed)) + "px";
+              } else if(direction == "top") {
+                  page.style.top = 170 + "px";
+              }
+              timer1 = setTimeout("mscroll(direction,speed)", 40);
+          }
+      }
+
+      // PATH
+      //
+
+      function mouseMove(e) {
+          if(e !== undefined) {
+              mouse_x = e.x;
+              mouse_y = e.y;
+              pathpicObj.style.left = mouse_x + 20 + "px";
+              pathpicObj.style.top = mouse_y + 20 + "px";
+          }
+      }
+      //
+      // PATH
+
+      ///Scrolling text
+      function arrayValues(msg, delay) {
+          this.message = msg;
+          this.delay = delay;
+      }
+
+      function arraySetup() {
+          msgArray = new Array()
+          msgArray[0] = new arrayValues("Secure your Homepage without using CGI - Scripts!", 1500);
+          setTimeout("scrollingText()", 1000);
+      }
+
+      var message_index = 0;
+      var character = 1;
+      var character_speed = 50;
+
+      function scrollingText() {
+          var scrollHTML = document.getElementById("scrollLayer");
+
+          if (message_index > msgArray.length-1) {
+              message_index = 0; }
+          if(message_index <= msgArray.length-1) {
+              if(character <= msgArray[message_index].message.length) {
+                  var msg = '<TABLE BORDER="0" WIDTH="630"><TR><TD ALIGN=LEFT><font face="Verdana" color="#C0C0C0"><em>' + msgArray[message_index].message.substring(0, character) + '</em></font></TD></TR></TABLE>';
+                  scrollHTML.innerHTML = msg;
+                  setTimeout("scrollingText()",character_speed);
+                  character++;
+              } else {
+                  character = 1;
+                  setTimeout("scrollingText()",msgArray[message_index].delay);
+                  message_index++;
+              }
+          }
+
+      }
+  </script>
+
+  <style>
+    #loadlay {position: absolute; width: 100px; height: 20px;  display: none;}
+    #toplayer { z-index: 10 ;position: absolute; display: none; top: 0px;  width: 640px; height: 140px;}
+    #linklayer {position: absolute; display: none; top: 110px; left: 10px; width: 200px; height: 400px;}
+    #demo1 { z-index: 1; position: absolute; display: none; left: 150px; top: 170px; width: 440px;}
+    #demo3 { z-index: 3; position: absolute; display: none; left: 150px; top: 170px; width: 440px;}
+    #demo4 { z-index: 4; position: absolute; display: none; left: 150px; top: 170px; width: 440px;}
+    #demo5 { z-index: 5; position: absolute; display: none; left: 150px; top: 170px; width: 440px;}
+    #demo6 { z-index: 6; position: absolute; display: none; left: 150px; top: 170px; width: 440px;}
+    #demo7 { z-index: 6; position: absolute; display: none; left: 150px; top: 170px; width: 440px;}
+    #labinfo { z-index: 20;position: absolute; display: none; left: 10px; top: 10px; width: 100px; height: 30px;}
+    #labcode { z-index: 21;position: absolute; display: none; left: 10px; top: 10px; width: 120px; height: 30px;}
+    #labalgorithm { z-index: 22;position: absolute; display: none; left: 10px; top: 10px; width: 130px; height: 30px;}
+    #labfuture { z-index: 24;position: absolute; display: none; left: 10px; top: 10px; width: 150px; height: 30px;}
+    #lablinks { z-index: 25;position: absolute; display: none; left: 10px; top: 10px; width: 150px; height: 30px;}
+    #labtest { z-index: 25;position: absolute; display: none; left: 10px; top: 10px; width: 150px; height: 30px;}
+
+    #pathpicLayer { z-index: 30; position: absolute; display: none; left: 0px; top: 0px; width: 60px; height: 76px;}
+
+    #scrollLayer { z-index: 400; position: absolute; width: 630px; display: none;}
+    #downLayer  { z-index: 400; position: absolute; width: 630px; display: none;}
+
+    .head {
+      font-family: "Verdana";
+      font-size: 10pt;
+      font-weight: bold;
+      color: #C0C0C0;
     }
-    timer1 = setTimeout("scroll(direction,speed)", 2);
-  }
-} 
 
-// PATH
-//
+    .text {
+      font-size: 10pt;
+      font-family: "Verdana";
+      color: #C0C0C0;
+    }
 
-function mouseMove(e) {
-mouse_x = eval(xpos);
-	mouse_y = eval(ypos);
-	pathpicObj.left = mouse_x + 20;
-    pathpicObj.top = mouse_y + 20;
-}
-//
-// PATH
+    .norm {
+      font-family: "Verdana";
+      color: #C0C0C0;
+    }
 
-///Scrolling text
-function arrayValues(msg, delay) {
-	this.message = msg;
-	this.delay = delay;
-}
+    .small {
+      font-family: "Verdana";
+      color: #C0C0C0;
+      font-size: 8pt;
+    }
 
-function arraySetup() {
-	msgArray = new Array()
-	msgArray[0] = new arrayValues("Secure your Homepage without using CGI - Scripts!", 1500);
-	setTimeout("scrollingText()", 1000);
-}
+    .scroll {
+      font-family: "Verdana";
+      color: #800000;
+      font-size: 7pt;
+    }
 
-var message_index = 0;
-var character = 1;
-var character_speed = 50;
+    .lab {
+      font-family: "Verdana";
+      color: #800000;
+      font-size: 9pt;
+    }
 
-function scrollingText() {
-	var scrollHTML = eval(doc + '["scrollLayer"]' + htm);
+    A:link {
+      color: #800000;
+      text-decoration:none;
+      font-family: "Verdana";
+    }
 
-	if (message_index > msgArray.length-1) {
-	message_index = 0; }
-	if(message_index <= msgArray.length-1) {
-		if(character <= msgArray[message_index].message.length) {
-			var msg = '<TABLE BORDER="0" WIDTH="630"><TR><TD ALIGN=LEFT><font face="Verdana" color="#C0C0C0"><em>' + msgArray[message_index].message.substring(0, character) + '</em></font></TD></TR></TABLE>';
-			if(is.ns4) {
-				scrollHTML.write(msg);
-				scrollHTML.close();
-			} else {
-				scrollHTML.innerHTML = msg;
-			}
-			setTimeout("scrollingText()",character_speed);
-			character++;
-		} else {
-			character = 1;
-			setTimeout("scrollingText()",msgArray[message_index].delay);
-			message_index++;
-		}
-	}
-	
-}
-</script>
+    A:visited {
+      color: #515151;
+      text-decoration:none;
+    }
 
-<style>
-#loadlay {position: absolute; width: 100px; height: 20px;  visibility: hidden;}
-#toplayer { z-index: 10 ;position: absolute; visibility: hidden; top: 0px;  width: 640px; height: 140px;}
-#linklayer {position: absolute; visibility: hidden; top: 110px; left: 10px; width: 200px; height: 400px;}
-#demo1 { z-index: 1; position: absolute; visibility: hidden; left: 150px; top: 170px; width: 440px;}
-#demo3 { z-index: 3; position: absolute; visibility: hidden; left: 150px; top: 170px; width: 440px;}
-#demo4 { z-index: 4; position: absolute; visibility: hidden; left: 150px; top: 170px; width: 440px;}
-#demo5 { z-index: 5; position: absolute; visibility: hidden; left: 150px; top: 170px; width: 440px;}
-#demo6 { z-index: 6; position: absolute; visibility: hidden; left: 150px; top: 170px; width: 440px;}
-#demo7 { z-index: 6; position: absolute; visibility: hidden; left: 150px; top: 170px; width: 440px;}
-#labinfo { z-index: 20;position: absolute; visibility: hidden; left: 10px; top: 10px; width: 100px; height: 30px;}
-#labcode { z-index: 21;position: absolute; visibility: hidden; left: 10px; top: 10px; width: 120px; height: 30px;}
-#labalgorithm { z-index: 22;position: absolute; visibility: hidden; left: 10px; top: 10px; width: 130px; height: 30px;}
-#labfuture { z-index: 24;position: absolute; visibility: hidden; left: 10px; top: 10px; width: 150px; height: 30px;}
-#lablinks { z-index: 25;position: absolute; visibility: hidden; left: 10px; top: 10px; width: 150px; height: 30px;}
-#labtest { z-index: 25;position: absolute; visibility: hidden; left: 10px; top: 10px; width: 150px; height: 30px;}
+    A:active {
+      color: #A3A3A3;
+      text-decoration:none;
+    }
 
-#pathpicLayer { z-index: 30; position: absolute; visibility: hidden; left: 0px; top: 0px; width: 60px; height: 76px;}
-
-#scrollLayer { z-index: 400; position: absolute; width: 630; visibility: hidden;}
-#downLayer  { z-index: 400; position: absolute; width: 630; visibility: hidden;}
-
-.head {
-	font-family: "Verdana";
-	font-size: 10pt;
-	font-weight: bold;
-	color: #C0C0C0;
-}
-
-.text {
-	font-size: 10pt;
-	font-family: "Verdana";
-	color: #C0C0C0;
-}
-
-.norm {
-	font-family: "Verdana";
-	color: #C0C0C0;
-}
-
-.small {
-	font-family: "Verdana";
-	color: #C0C0C0;
-	font-size: 8pt;
-}
-
-.scroll {
-	font-family: "Verdana";
-	color: #800000;
-	font-size: 7pt;
-}			  
-
-.lab {
-	font-family: "Verdana";
-	color: #800000;
-	font-size: 9pt;
-}
-
-A:link {
-	color= #800000;
-	text-decoration:none;
-	font-family: "Verdana";
-}
-
-A:visited {
-	color: #515151;
-	text-decoration:none;
-}
-
-A:active {
-	color: #A3A3A3;
-	text-decoration:none;
-}
-
-A:hover {
-	color:#C0C0C0;
-}
+    A:hover {
+      color:#C0C0C0;
+    }
 
 
-A:active.scroll {
-	color: #0000FF;
-	text-decoration:none;
-}
+    A:active.scroll {
+      color: #0000FF;
+      text-decoration:none;
+    }
 
 
-</style>
+  </style>
 </head>
 
 <body BGCOLOR="#000000" LINK="#800000" TEXT="#FFFF00" MARGINWIDTH="0" MARGINHEIGHT="0" SCROLL="NO"
-onLoad="loaded = 1;
-if(is.ns4) {
-    available_width=innerWidth;
-    available_height=innerHeight;
-    } else if(is.ie4) {
-    available_width=document.body.clientWidth;
-	available_height=document.body.clientHeight;
-	} 
+      onLoad="loaded = 1;
+available_width=document.body.clientWidth;
+available_height=document.body.clientHeight;
 loadl();"
-onResize="history.go(0)" onmousemove="if(loaded==1)mouseMove();">
+      onResize="history.go(0)" onmousemove=mouseMove()>
 <div id="toplayer">
-<script>
-var loaded=0;
-</script>
-<table border="0" width="640" height="16" cellspacing="0" cellpadding="0" bgcolor="#000000">
-  <tr>
-    <td width="209" height="16" align="left"><img src="logo2klein.jpg" width="191" height="88" alt="logo2klein.jpg (11761 Byte)"></td>
-    <td width="245" height="16"><font class="norm">Welcome
-    to the Homepage of<br>
-    the SOS - System and<br>
-    the BC1 Algorithm!</font></td>
-    <td width="246" height="16" align="right"><img src="BC1.jpg" width="231" height="103" alt="BC1.jpg (11340 Byte)"></td>
-  </tr>
-</table>
+  <script>
+      var loaded=0;
+  </script>
+  <table border="0" width="640" height="16" cellspacing="0" cellpadding="0" bgcolor="#000000">
+    <tr>
+      <td width="209" height="16" align="left"><img src="logo2klein.jpg" width="191" height="88" alt="logo2klein.jpg (11761 Byte)"></td>
+      <td width="245" height="16"><font class="norm">Welcome
+        to the Homepage of<br>
+        the SOS - System and<br>
+        the BC1 Algorithm!</font></td>
+      <td width="246" height="16" align="right"><img src="BC1.jpg" width="231" height="103" alt="BC1.jpg (11340 Byte)"></td>
+    </tr>
+  </table>
 
-<table border="0" width="700" height="1" cellspacing="0" cellpadding="0">
-  <tr>
-    <td width="195" height="19" bgcolor="#808080"><font color="#808080">xx<!--Show empty table in NS-->xx</font></td>
-    <td width="514" height="1" bgcolor="#808080" valign="middle" align="center"><font
-    color="#C0C0C0"></font><font face="Verdana" color="#C0C0C0"><em>Secure
-    your Homepage without using CGI - Scripts!</em></font></td>
-  </tr>
-</table>
+  <table border="0" width="700" height="1" cellspacing="0" cellpadding="0">
+    <tr>
+      <td width="195" height="19" bgcolor="#808080"><font color="#808080">xx<!--Show empty table in NS-->xx</font></td>
+      <td width="514" height="1" bgcolor="#808080" valign="middle" align="center"><font
+              color="#C0C0C0"></font><font face="Verdana" color="#C0C0C0"><em>Secure
+        your Homepage without using CGI - Scripts!</em></font></td>
+    </tr>
+  </table>
 
 
 </div><div id="demo4"><font class="head">The Algorithm BC1 (Binary Comparision)</font>
-<br><br>
-<font class="text">BC1 works on the basis of a binary
-comparision. That is if binary numbers are equal output 0 else 1. And this process is
-reversible.</font>
-<br><br>
-<font class="small">
-10101000 11111011<br>
-01010011 10101000<br>
------------ -----------<br>
-11111011 01010011
-</font>
-<br><br><font class="text">
-BC1 encrypts four chars of the data at once. The comparision is as
-followed ( one number represents one char) The example uses a 6 chars long password.<br>
-<br>
-</font>
-<table border="0" width="53%" cellspacing="0" cellpadding="0">
-  <tr>
-    <td width="50%" align="right"><font class="small">Data -&gt;</font></td>
-    <td width="50%"><font class="small">1234</font></td>
-  </tr>
-  <tr>
-    <td width="50%" align="right"><font class="small">Key -&gt;</font></td>
-    <td width="50%"><font class="small">1234</font></td>
-  </tr>
-  <tr>
-    <td width="50%"></td>
-    <td width="50%"><font class="small">2345</font></td>
-  </tr>
-  <tr>
-    <td width="50%"></td>
-    <td width="50%"><font class="small">3456</font></td>
-  </tr>
-  <tr>
-    <td width="50%"></td>
-    <td width="50%"><font class="small">4561</font></td>
-  </tr>
-  <tr>
-    <td width="50%"></td>
-    <td width="50%"><font class="small">5612</font></td>
-  </tr>
-  <tr>
-    <td width="50%"></td>
-    <td width="50%"><font class="small">6123</font></td>
-  </tr>
-</table>
-<font class="text"><br>
-Every times four new chars are to be encrypted the last bit of the
-password is shifted to the beginning.</font>
+  <br><br>
+  <font class="text">BC1 works on the basis of a binary
+    comparision. That is if binary numbers are equal output 0 else 1. And this process is
+    reversible.</font>
+  <br><br>
+  <font class="small">
+    10101000 11111011<br>
+    01010011 10101000<br>
+    ----------- -----------<br>
+    11111011 01010011
+  </font>
+  <br><br><font class="text">
+    BC1 encrypts four chars of the data at once. The comparision is as
+    followed ( one number represents one char) The example uses a 6 chars long password.<br>
+    <br>
+  </font>
+  <table border="0" width="53%" cellspacing="0" cellpadding="0">
+    <tr>
+      <td width="50%" align="right"><font class="small">Data -&gt;</font></td>
+      <td width="50%"><font class="small">1234</font></td>
+    </tr>
+    <tr>
+      <td width="50%" align="right"><font class="small">Key -&gt;</font></td>
+      <td width="50%"><font class="small">1234</font></td>
+    </tr>
+    <tr>
+      <td width="50%"></td>
+      <td width="50%"><font class="small">2345</font></td>
+    </tr>
+    <tr>
+      <td width="50%"></td>
+      <td width="50%"><font class="small">3456</font></td>
+    </tr>
+    <tr>
+      <td width="50%"></td>
+      <td width="50%"><font class="small">4561</font></td>
+    </tr>
+    <tr>
+      <td width="50%"></td>
+      <td width="50%"><font class="small">5612</font></td>
+    </tr>
+    <tr>
+      <td width="50%"></td>
+      <td width="50%"><font class="small">6123</font></td>
+    </tr>
+  </table>
+  <font class="text"><br>
+    Every times four new chars are to be encrypted the last bit of the
+    password is shifted to the beginning.</font>
 </div>
 
 <div ID="demo1">
-<font class="head">Information</font>
-<br><br>
-<font class="text">The problem, which stands behind this program is the following:
-There must be a possibility to secure online *.htm - files without CGI-BIN
-Skripts.<br>This is easy with S.imple O.nline S.ecurity:<br>
-Encrypt the file you want to secure with SOS.exe.
-What you get is the encrypted file, which can be easily opened and decrypted by an
-javascript 1.2 capable Browser.
-Just open the file, type in your password and you can read the file again.</font>
-<br><br>
-<font class="head">News</font><br><br>
-<font class="text"><b><i>28.8.1999</b></i><br>
-SOS 1.2 has been released.<br>
-Changes from 1.0 to 1.2:<br>
-- This version uses an algorithm similiar to RC4.<br>
-- The -w switch is no longer necessary.<br>
-- Improved output routine.
-</font>
-<br><br>
-<font class="text"><b><i>10.6.1999</b></i><br>
-The Site is now Cross-Browser compatible, was much work.... <br>
-Trying to get some pro\B4s to test the encryption</font>
-<br><br>
+  <font class="head">Information</font>
+  <br><br>
+  <font class="text">The problem, which stands behind this program is the following:
+    There must be a possibility to secure online *.htm - files without CGI-BIN
+    Skripts.<br>This is easy with S.imple O.nline S.ecurity:<br>
+    Encrypt the file you want to secure with SOS.exe.
+    What you get is the encrypted file, which can be easily opened and decrypted by an
+    javascript 1.2 capable Browser.
+    Just open the file, type in your password and you can read the file again.</font>
+  <br><br>
+  <font class="head">News</font><br><br>
+  <font class="text"><i><b>28.8.1999</b></i><br>
+    SOS 1.2 has been released.<br>
+    Changes from 1.0 to 1.2:<br>
+    - This version uses an algorithm similiar to RC4.<br>
+    - The -w switch is no longer necessary.<br>
+    - Improved output routine.
+  </font>
+  <br><br>
+  <font class="text"><i><b>10.6.1999</b></i><br>
+    The Site is now Cross-Browser compatible, was much work.... <br>
+    Trying to get some pro\B4s to test the encryption</font>
+  <br><br>
 
-<font class="text"><b><i>19.5.1999</b></i><br>
-SOS won a prize at the Prix Ars Electronica Contest in the U-19 category (<a href="http://prixars.orf.at">http://prixars.orf.at</a>)
-hehe proud of that..;-)</font><br><br>
-<font class="text"><b><i>25.4.1999</b></i><br>
-The Site is the first time up</font>
-<br><br>
+  <font class="text"><i><b>19.5.1999</b></i><br>
+    SOS won a prize at the Prix Ars Electronica Contest in the U-19 category (<a href="http://prixars.orf.at">http://prixars.orf.at</a>)
+    hehe proud of that..;-)</font><br><br>
+  <font class="text"><i><b>25.4.1999</b></i><br>
+    The Site is the first time up</font>
+  <br><br>
 </div>
 
 <div id="demo3">
-<font class="head">The C - Code</font>
-<br><br>
-<font class="text">SOS 1.2</font>
-<br><br>
+  <font class="head">The C - Code</font>
+  <br><br>
+  <font class="text">SOS 1.2</font>
+  <br><br>
 
-<table border="0" width="100%" cellspacing="0" cellpadding="0">
-  <tr>
-    <td width="24%"><a href="1.2/sos.c"><font class="text">sos.c</font></a></td>
-    <td width="76%"><font class="text">The Sos-Source Code in
-    ANSI-C</font></td>
-  </tr>
-  <tr>
-    <td width="24%"><a href="1.2/sos.exe"><font class="text">sos.exe</font></a></td>
-    <td width="76%"><font class="text">The executeable SOS-Sytem</font></td>
-  </tr>
-</table><br><br>
-<font class="text">SOS 1.0</font>
-<br><br>
-<table border="0" width="100%" cellspacing="0" cellpadding="0">
-  <tr>
-    <td width="24%"><a href="1.0/sos.c"><font class="text">sos.c</font></a></td>
-    <td width="76%"><font class="text">The Sos-Source Code in
-    ANSI-C</font></td>
-  </tr>
-  <tr>
-    <td width="24%"><a href="1.0/sos.exe"><font class="text">sos.exe</font></a></td>
-    <td width="76%"><font class="text">The executeable SOS-Sytem</font></td>
-  </tr>
-</table>
+  <table border="0" width="100%" cellspacing="0" cellpadding="0">
+    <tr>
+      <td width="24%"><a href="1.2/sos.c"><font class="text">sos.c</font></a></td>
+      <td width="76%"><font class="text">The Sos-Source Code in
+        ANSI-C</font></td>
+    </tr>
+    <tr>
+      <td width="24%"><a href="1.2/sos.exe"><font class="text">sos.exe</font></a></td>
+      <td width="76%"><font class="text">The executeable SOS-Sytem</font></td>
+    </tr>
+  </table><br><br>
+  <font class="text">SOS 1.0</font>
+  <br><br>
+  <table border="0" width="100%" cellspacing="0" cellpadding="0">
+    <tr>
+      <td width="24%"><a href="1.0/sos.c"><font class="text">sos.c</font></a></td>
+      <td width="76%"><font class="text">The Sos-Source Code in
+        ANSI-C</font></td>
+    </tr>
+    <tr>
+      <td width="24%"><a href="1.0/sos.exe"><font class="text">sos.exe</font></a></td>
+      <td width="76%"><font class="text">The executeable SOS-Sytem</font></td>
+    </tr>
+  </table>
 </div>
 
 <div id="demo5">
-<font class="head">Future Projects</font>
-<br><br>
-<font class="text">
-The next thing I want to finish is a javascript-decryption-status indicator.
-Should be ready in the next few days.<br>
-<br>I\B4m looking forward to have the SOS -
-System once with some famous Algorithms like RC4, RC5, Blowfish,...<br>
-perhaps there will also come a german version of the proggie once...we gonna see</font>
+  <font class="head">Future Projects</font>
+  <br><br>
+  <font class="text">
+    The next thing I want to finish is a javascript-decryption-status indicator.
+    Should be ready in the next few days.<br>
+    <br>I\B4m looking forward to have the SOS -
+    System once with some famous Algorithms like RC4, RC5, Blowfish,...<br>
+    perhaps there will also come a german version of the proggie once...we gonna see</font>
 </div>
 
 <div id="demo6"><font class="head">Links, some of my
-favorites:</font>
-<br><br>
-<a href="http://www.theargon.com">
-<font class="text">www.theargon.com</font></a><br>
-<a href="http://www.cryptography.com"><font class="text">www.cryptography.com</font></a>
+  favorites:</font>
+  <br><br>
+  <a href="http://www.theargon.com">
+    <font class="text">www.theargon.com</font></a><br>
+  <a href="http://www.cryptography.com"><font class="text">www.cryptography.com</font></a>
 </div>
 
 <div id="demo7">
-<font class="head">Test Pages</font>
-<br><br> 
-<font class="text">Here I have placed some pages for you
-to to test.</font><br><br>
+  <font class="head">Test Pages</font>
+  <br><br>
+  <font class="text">Here I have placed some pages for you
+    to to test.</font><br><br>
 
 
-<font class="text">SOS 1.2</font>
-<br><br>
-<table border="0" width="100%" cellspacing="0" cellpadding="0">
-  <tr>
-    <td width="24%"><a href="1.2/test.htm"><font class="text">test.htm</font></a></td>
-    <td width="76%"><font class="text">Test-File</font></td>
-  </tr>
-  <tr>
-    <td width="24%"><a href="1.2/crypt.htm"><font class="text">crypt.htm</font></a></td>
-    <td width="76%"><font class="text">test.htm encrypted with the
-    password ABCDEFG</font></td>
-  </tr>
-  <tr>
-    <td width="24%"><a href="1.2/crack.htm"><font class="text">crack.htm</font></a></td>
-    <td width="76%"><font class="text">It`s your task to find the
-    pass for this page</font></td>
-  </tr>
-</table>
-<br><br>
-<font class="text">SOS 1.0</font>
-<br><br>
+  <font class="text">SOS 1.2</font>
+  <br><br>
+  <table border="0" width="100%" cellspacing="0" cellpadding="0">
+    <tr>
+      <td width="24%"><a href="1.2/test.htm"><font class="text">test.htm</font></a></td>
+      <td width="76%"><font class="text">Test-File</font></td>
+    </tr>
+    <tr>
+      <td width="24%"><a href="1.2/crypt.htm"><font class="text">crypt.htm</font></a></td>
+      <td width="76%"><font class="text">test.htm encrypted with the
+        password ABCDEFG</font></td>
+    </tr>
+    <tr>
+      <td width="24%"><a href="1.2/crack.htm"><font class="text">crack.htm</font></a></td>
+      <td width="76%"><font class="text">It`s your task to find the
+        pass for this page</font></td>
+    </tr>
+  </table>
+  <br><br>
+  <font class="text">SOS 1.0</font>
+  <br><br>
 
 
-<table border="0" width="100%" cellspacing="0" cellpadding="0">
-  <tr>
-    <td width="24%"><a href="1.0/test.htm"><font class="text">test.htm</font></a></td>
-    <td width="76%"><font class="text">Test-File</font></td>
-  </tr>
-  <tr>
-    <td width="24%"><a href="1.0/crypt.htm"><font class="text">crypt.htm</font></a></td>
-    <td width="76%"><font class="text">test.htm encrypted with the
-    password SIMPLE</font></td>
-  </tr>
-  <tr>
-    <td width="24%"><a href="1.0/crack.htm"><font class="text">crack.htm</font></a></td>
-    <td width="76%"><font class="text">It`s your task to find the
-    pass for this page</font></td>
-  </tr>
-</table>
+  <table border="0" width="100%" cellspacing="0" cellpadding="0">
+    <tr>
+      <td width="24%"><a href="1.0/test.htm"><font class="text">test.htm</font></a></td>
+      <td width="76%"><font class="text">Test-File</font></td>
+    </tr>
+    <tr>
+      <td width="24%"><a href="1.0/crypt.htm"><font class="text">crypt.htm</font></a></td>
+      <td width="76%"><font class="text">test.htm encrypted with the
+        password SIMPLE</font></td>
+    </tr>
+    <tr>
+      <td width="24%"><a href="1.0/crack.htm"><font class="text">crack.htm</font></a></td>
+      <td width="76%"><font class="text">It`s your task to find the
+        pass for this page</font></td>
+    </tr>
+  </table>
 </div>
 
 
 <div id="linklayer">
-<table height="138" cellspacing=0 cellpadding=0 border=0 width="159">
-  <tr>
-    <td width="157" height="65" bgcolor="#808080" valign="middle" align="center"><font color="#808080">xx<!--Show empty table in NS-->xx</font></td>
-  </tr>
-  <tr>
-    <td width="157" height="98" bgcolor="#808080" valign="middle" align="center"><br>
-    <font class="norm"><a href="Javascript://" onclick="ToggleLayer('demo1');"
-    onmouseover="infoObj.visibility='visible';" onmouseout="infoObj.visibility='hidden';">Information</a></font><br>
-    <font class="norm"><a href="Javascript://" onclick="ToggleLayer('demo3');"
-    onmouseover="codeObj.visibility='visible';" onmouseout="codeObj.visibility='hidden';">The C - Code</a></font><br>
-    <font class="norm"><a href="Javascript://" onclick="ToggleLayer('demo4');"
-    onmouseover="algorithmObj.visibility='visible';"
-    onmouseout="algorithmObj.visibility='hidden';">The Algorithm BC1</a></font><br>
-    <font class="norm"><a href="Javascript://" onclick="ToggleLayer('demo5')" ;
-    onmouseover="futureObj.visibility='visible';" onmouseout="futureObj.visibility='hidden';">Future Projects</a></font><br>
-    <font class="norm"><a href="Javascript://" onclick="ToggleLayer('demo7')" ;
-    onmouseover="testObj.visibility='visible';" onmouseout="testObj.visibility='hidden';">Test Pages</a></font><br>
-    <font class="norm"><a href="Javascript://" onclick="ToggleLayer('demo6');"
-    onmouseover="linksObj.visibility='visible';" onmouseout="linksObj.visibility='hidden';">Links</a></font></td>
-  </tr>
-  <tr>
-    <td width="155" height="108" bgcolor="#808080" valign="middle" align="right"><a HREF="JavaScript://"
-    onMouseOver="loop=true;scroll('up',5);" onMouseOut="loop=false;clearTimeout(timer1)"
-    ALT="Fast Speed"><img src="scrolloben.gif" width="66" height="29" border="0"></a><br>
-    <a HREF="JavaScript://" onClick="loop=true;scroll('top',0)" ALT="Return To Top"><img
-    src="scrollmitte.gif" width="66" height="29" border="0"></a><br>
-    <a HREF="JavaScript://" onMouseOver="loop=true;scroll('dn',5);"
-    onMouseOut="loop=false;clearTimeout(timer1)" ALT="Medium Speed"><img src="scrollunten.gif"
-    width="66" height="29" border="0"></a></td>
-    </tr>  
-</tr>
-  <tr>
-    <td width="157" height="141" bgcolor="#808080" valign="middle" align="center"><font class="small">Send mail with questions, complaints or comments to:
-    <a href="mailto:auwe@gmx.net">auwe@gmx.net</a><br>
-    (UIN: 11842040)<br>
-    Site made by auWE, the algorythm BC1 and the name S.O.S. have my copyright.</font></td>
-  </tr>
-</table>
+  <table height="138" cellspacing=0 cellpadding=0 border=0 width="159">
+    <tr>
+      <td width="157" height="65" bgcolor="#808080" valign="middle" align="center"><font color="#808080">xx<!--Show empty table in NS-->xx</font></td>
+    </tr>
+    <tr>
+      <td width="157" height="98" bgcolor="#808080" valign="middle" align="center"><br>
+        <font class="norm"><a href="Javascript://" onclick="ToggleLayer('demo1');"
+                              onmouseover="infoObj.style.display='block';" onmouseout="infoObj.style.display='none';">Information</a></font><br>
+        <font class="norm"><a href="Javascript://" onclick="ToggleLayer('demo3');"
+                              onmouseover="codeObj.style.display='block';" onmouseout="codeObj.style.display='none';">The C - Code</a></font><br>
+        <font class="norm"><a href="Javascript://" onclick="ToggleLayer('demo4');"
+                              onmouseover="algorithmObj.style.display='block';"
+                              onmouseout="algorithmObj.style.display='none';">The Algorithm BC1</a></font><br>
+        <font class="norm"><a href="Javascript://" onclick="ToggleLayer('demo5')" ;
+                              onmouseover="futureObj.style.display='block';" onmouseout="futureObj.style.display='none';">Future Projects</a></font><br>
+        <font class="norm"><a href="Javascript://" onclick="ToggleLayer('demo7')" ;
+                              onmouseover="testObj.style.display='block';" onmouseout="testObj.style.display='none';">Test Pages</a></font><br>
+        <font class="norm"><a href="Javascript://" onclick="ToggleLayer('demo6');"
+                              onmouseover="linksObj.style.display='block';" onmouseout="linksObj.style.display='none';">Links</a></font></td>
+    </tr>
+    <tr>
+      <td width="155" height="108" bgcolor="#808080" valign="middle" align="right">
+        <a HREF="JavaScript://" onMouseOver="loop=true;mscroll('up',5);" onMouseOut="loop=false;clearTimeout(timer1)" ALT="Fast Speed">
+          <img src="scrolloben.gif" width="66" height="29" border="0"></a><br>
+        <a HREF="JavaScript://" onclick="loop=true;mscroll('top',0);" ALT="Return To Top">
+          <img src="scrollmitte.gif" width="66" height="29" border="0"></a><br>
+        <a HREF="JavaScript://" onMouseOver="loop=true;mscroll('dn',5);" onMouseOut="loop=false;clearTimeout(timer1)" ALT="Medium Speed">
+          <img src="scrollunten.gif" width="66" height="29" border="0"></a>
+      </td>
+    </tr>
+    </tr>
+    <tr>
+      <td width="157" height="141" bgcolor="#808080" valign="middle" align="center"><font class="small">Send mail with questions, complaints or comments to:
+        <a href="mailto:auwe@gmx.net">auwe@gmx.net</a><br>
+        (UIN: 11842040)<br>
+        Site made by auWE, the algorythm BC1 and the name S.O.S. have my copyright.</font></td>
+    </tr>
+  </table>
 </div>
 
 <div id="labinfo">
-<font class="lab">General<br>
-Information</font>
+  <font class="lab">General<br>
+    Information</font>
 </div>
 
 <div id="labcode"><font class="lab">The complete<br>
-source code<br>
-and exe`s</font>
+  source code<br>
+  and exe`s</font>
 </div>
 
 <div id="labalgorithm"><font class="lab">The algorithm which<br>
-is included in SoS</font>
+  is included in SoS</font>
 </div>
 
 <div id="labfuture"><font class="lab">What our plans are</font>
 </div>
 
 <div id="lablinks"><font class="lab">Links to other<br>
-interesting<br>
-Cryptology sites</font>
+  interesting<br>
+  Cryptology sites</font>
 </div>
 
 <div id="labtest"><font class="lab">Sites to <br>
-test the<br>
-encryption</font>
+  test the<br>
+  encryption</font>
 </div>
 
 <div id="loadlay"><font face="Verdana" color="#800000"><small><small>
 
 </small></small><big><big><big>Loading..</big></big></big></font>
 </div><div id="pathpicLayer">
-<font class="small">SOS</font>
+  <font class="small">SOS</font>
 </div><div ID="scrollLayer"></div>
-<div style="visibility: hidden;">
-<!-- Start of TheCounter.com Code -->
-<SCRIPT TYPE="text/javascript" LANGUAGE="javascript">
-s="na";c="na";j="na";f=""+escape(document.referrer)
-</SCRIPT>
-<SCRIPT TYPE="text/javascript" LANGUAGE="javascript1.2">
-s=screen.width;v=navigator.appName
-if (v != "Netscape") {c=screen.colorDepth}
-else {c=screen.pixelDepth}
-j=navigator.javaEnabled()
-</SCRIPT>
-<SCRIPT TYPE="text/javascript" LANGUAGE="javascript">
-function pr(n) {document.write(n,"\n");}
-NS2Ch=0
-if (navigator.appName == "Netscape" &&
-navigator.appVersion.charAt(0) == "2") {NS2Ch=1}
-if (NS2Ch == 0) {
-r="&size="+s+"&colors="+c+"&referer="+f+"&java="+j+""
-pr("<A HREF=\"http://www.TheCounter.com\" TARGET=\"_top\"><IMG"+
-" BORDER=0 SRC=\"http://c1.thecounter.com/id=283248"+r+"\"><\/A>")}
-</SCRIPT>
-<NOSCRIPT><A HREF="http://www.TheCounter.com" TARGET="_top"><IMG
-SRC="http://c1.thecounter.com/id=283248" ALT="TC" BORDER=0></A>
-</NOSCRIPT>
-<!-- End of TheCounter.com Code -->
-</div>
 </body>
 </html>
