@@ -1,7 +1,7 @@
 # Simple Online Security
 
-This is a mirror of http://members.linznet.at/auwe the original website
-for the Simple Online Security project.
+This is a mirror of members.linznet.at/auwe the original website
+for the Simple Online Security project to [https://koyaan.com/sos](https://koyaan.com/sos)
 
 # Do not use ! For educational purposes only !
 
@@ -20,6 +20,11 @@ SOS [input-file] [output-file] [password] [-c]
     [output-file] name of the encrypted file
     [password]    key for encryption
     [-c]          exclude percentage counter
+
+$ ./sos test.htm crypt.htm ABCDEFG
+
+Encryption is 100.00% done!
+    
 ```
 
-Decryption demo: password ABCDEFG [1.2/crypt.htm](1.2/crypt.htm) 
+[Decryption demo](https://koyaan.com/sos/1.2/crypt.htm) password `ABCDEFG`
